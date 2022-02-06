@@ -1,9 +1,10 @@
 import React from 'react';
+import Home from './page/home'
 
 function App() {
   return (
     <React.Fragment>
-      xin chao
+      <Home />
     </React.Fragment>
   );
 }
