@@ -64,7 +64,6 @@ const ListMessage: React.FC<ListMessage<any>> = ({ ...props }) => {
 
         </List>
     }
-        <Typography>test deploy</Typography>
     </React.Fragment>;
 };
 

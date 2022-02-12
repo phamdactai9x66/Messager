@@ -9,6 +9,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* min-width: 500px; */
+}
+#root{
+  min-width: 500px;
 }
 
 code {
