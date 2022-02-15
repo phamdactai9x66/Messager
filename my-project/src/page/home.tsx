@@ -1,6 +1,6 @@
 import React from 'react';
-import ListMessage from '../component/listMessage'
-import SendMessage from '../component/sendMessage'
+import ListMessage from 'component/listMessage'
+import SendMessage from 'component/sendMessage'
 import { Box } from '@mui/material'
 import { Link } from 'react-router-dom'
 interface Home<T> {
