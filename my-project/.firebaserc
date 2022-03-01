@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "test12-873e4"
+    "default": "test12-873e4",
+    "dev_evn": "test12-873e4"
   }
 }
