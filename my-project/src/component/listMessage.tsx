@@ -23,6 +23,7 @@ const ListMessage: React.FC<ListMessage<any>> = ({ ...props }) => {
         // if (countRenderMessage.current > 1) return;
         // elementScroll.current.scrollTop = ListMessage.length * ItemList.current?.clientHeight;
         // countRenderMessage.current += 1;
+        const test1 = [1, 2, 3].flat
         elementScroll.current.scrollTop = ListMessage.length * ItemList.current?.clientHeight;
     }, [ListMessage.length]);
 

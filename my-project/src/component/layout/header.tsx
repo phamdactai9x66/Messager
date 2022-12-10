@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useContext } from 'react'
+import { getTheme } from '../../App'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,8 +16,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom'
 import requireAuth, { useAuth } from '../auth/requireAuth'
 
-const PageLogin = ['Home', 'About', 'Profile'];
-const PageLogout = ['Home', 'Login'];
+const PageLogin = ['Home', 'About', 'Profile', 'TestFeature'];
+const PageLogout = ['Home', 'Login', 'TestFeature'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const HeaderClient = () => {
@@ -23,12 +25,16 @@ const HeaderClient = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const { checkLogin, Logout, Login } = useAuth();
-    const pages = checkLogin ? PageLogin : PageLogout
+    const pages = checkLogin ? PageLogin : PageLogout;
+    const changeTheme = useContext<any>(getTheme)
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
     };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
+        const checkTheme = changeTheme?.changeTheme == 'light' ? 'dark' : 'light';
+        changeTheme.setChangeTheme(checkTheme);
+        localStorage.setItem('themeLocal', checkTheme);
     };
 
     const handleCloseNavMenu = () => {
@@ -55,7 +61,7 @@ const HeaderClient = () => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                        sx={{ mr: 5, display: { xs: 'none', md: 'flex' }, background: { xs: 'red' } }}
                     >
                         LOGO
                     </Typography>
@@ -90,7 +96,7 @@ const HeaderClient = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page} onClick={navigatePage(page)} >
                                     <Typography textAlign="center" >{page}</Typography>
                                 </MenuItem>
                             ))}
