@@ -9,12 +9,6 @@ interface RequireAuth<T> {
 
 /**
  * 
- * @param param0 test1
- * @returns 
- */
-
-/**
- * 
  * @param param0 test2
  * @returns 
  */
