@@ -7,6 +7,12 @@ interface RequireAuth<T> {
 
 }
 
+/**
+ * 
+ * @param param0 test1
+ * @returns 
+ */
+
 const RequireAuth: React.FC<RequireAuth<any>> = ({ ...props }) => {
     const [checkLogin, setcheckLogin] = React.useState(false);
     const Login = () => setcheckLogin(true);
