@@ -33,19 +33,21 @@ function App() {
       <getTheme.Provider value={{ setChangeTheme, changeTheme }}>
         <Suspense fallback={Feedback()}>
           <RequireAuth>
-            <Header />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='About' element={<ProtectRoutes> <About /> </ProtectRoutes>} >
-                {/* <Route index element={<About />}></Route>
+            <div>
+              <Header />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='About' element={<ProtectRoutes> <About /> </ProtectRoutes>} >
+                  {/* <Route index element={<About />}></Route>
           <Route path="" element={<About />}></Route>
           <Route path="" element={<About />}></Route> */}
-              </Route>
-              <Route path='Profile' element={<ProtectRoutes> <Profile /></ProtectRoutes>} />
-              <Route path='Login' element={<Login />} />
-              <Route path='TestFeature' element={<TestFeature />} />
-              <Route path='*' element={<> not Found</>} />
-            </Routes>
+                </Route>
+                <Route path='Profile' element={<ProtectRoutes> <Profile /></ProtectRoutes>} />
+                <Route path='Login' element={<Login />} />
+                <Route path='TestFeature' element={<TestFeature />} />
+                <Route path='*' element={<> not Found</>} />
+              </Routes>
+            </div>
           </RequireAuth>
         </Suspense>
       </getTheme.Provider>

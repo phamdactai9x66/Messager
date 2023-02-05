@@ -1,26 +1,22 @@
+import usePreviousValue from 'hooks/usePreviousValue'
 import React, { useImperativeHandle } from 'react'
-import { Button, Typography, TextField } from '@mui/material'
+import useInputLocalstorage from 'hooks/useInputLocalstorage'
 interface IncreaseValue<T> {
     ref: T
 }
 
 const IncreaseValue: React.FC<IncreaseValue<any>> = React.forwardRef(({ ...props }, ref) => {
-    const [increase, setIncrease] = React.useState(0);
-    const getElement = React.useRef(null);
-    const test1 = (step: number = 1) => () => setIncrease(e => e + step);
+    const [name, setName] = useInputLocalstorage('nameField', () => '')
+    const [address, setAddress] = useInputLocalstorage('addressField', () => '')
+    const [toggleValue, setToggleValue] = React.useState(0);
+    const oldValue = usePreviousValue(toggleValue);
 
-    useImperativeHandle(ref, () => {
-        return {
-            increaseValue: test1,
-            getElement
-        }
-    })
-    console.log('test1')
     return (
         <>
-            <TextField label="Price" ref={getElement} />
-            <Typography >{increase}</Typography>
-            <Button onClick={test1(2)}>increase</Button>
+            {oldValue + '|' + toggleValue}
+            <p onClick={() => { setToggleValue(e => e + 1) }}>click</p>
+            <p> <span>name: </span> <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} /></p>
+            <p> <span>address: </span> <input type="text" value={address} onChange={(e) => { setAddress(e.target.value) }} /></p>
         </>
     )
 })

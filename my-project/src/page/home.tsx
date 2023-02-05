@@ -10,7 +10,6 @@ interface Home<T> {
 const Home: React.FC<Home<any>> = ({ ...props }) => {
     return <React.Fragment>
         <Box sx={{ backgroundColor: 'Background.paper' }}>
-            <Typography component={'p'}>this evn is client</Typography>
             <ListMessage />
             <SendMessage />
         </Box>
